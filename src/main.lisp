@@ -75,14 +75,6 @@
 
 (console-log (three-position camera))
 
-(renderer-set-animation-loop renderer (lambda-js-callback :js-ref
-					  ((dt :js-ref))
-					(camera-helper-update-matrix camera-helper)
-					(camera-helper-update camera-helper)
-					(renderer-set-clear-color renderer (js-call "0xbbbbbb") 1)
-					(renderer-set-viewport renderer (js-/ window-width 2) 0 (js-/ window-width 2) window-height)
-					(look-at camera (three-position test-mesh))
-					(renderer-render renderer scene camera)))
 
 (console-log (instance-request-animation-frame (js-call "window")))
 

@@ -59,3 +59,12 @@
 (setf (far camera) 2000)
 (set-position (three-position camera) 23 -21 -20)
 (set-position (three-position test-mesh) 15 3 -80)
+
+(renderer-set-animation-loop renderer (lambda-js-callback :js-ref
+					  ((dt :js-ref))
+					(camera-helper-update-matrix camera-helper)
+					(camera-helper-update camera-helper)
+					(renderer-set-clear-color renderer (js-call "0xbbbbbb") 1)
+					(renderer-set-viewport renderer (js-/ window-width 2) 0 (js-/ window-width 2) window-height)
+					(look-at camera (three-position test-mesh))
+					(renderer-render renderer scene camera)))
