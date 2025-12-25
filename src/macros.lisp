@@ -16,5 +16,6 @@
   (import-implementation-macro "define-js-object")
   (import-implementation-macro "define-js-setter")
   (import-implementation-macro "define-js-variable")
-  (import-implementation-macro "js-callback"))
+  (import-implementation-macro "js-callback")
+  (import-implementation-macro "lambda-js-callback"))
 

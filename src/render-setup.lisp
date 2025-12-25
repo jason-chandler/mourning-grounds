@@ -24,7 +24,7 @@
 (let ((obj (js-new "Object")))
   (defparameter test-mesh (progn
 			    (setf (color obj) (js-call "0x0000ff"))
-			    (setf (wireframe obj) t)
+			    (setf (wireframe obj) nil)
 			    
 			    (js-new (three-class mesh)
 				    (js-new (three-class sphere-geometry) 50 16 8)
@@ -40,6 +40,12 @@
   ((self :js-ref)
    (new :js-ref)))
 
+(define-js-method (set-position :js-expr "set" :type :js-ref)
+  ((pos :js-ref)
+   (x :object)
+   (y :object)
+   (z :object)))
+
 (define-js-method (look-at :js-expr "lookAt" :type :js-ref)
   ((self :js-ref)
    (target :js-ref)))
@@ -49,3 +55,7 @@
 (define-js-callback (ident :type :js-ref)
     ((dt :js-ref))
   dt)
+
+(setf (far camera) 2000)
+(set-position (three-position camera) 23 -21 -20)
+(set-position (three-position test-mesh) 15 3 -80)

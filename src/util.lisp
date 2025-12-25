@@ -20,6 +20,7 @@
     ((arr :js-ref)
      (val :js-ref)))
 
+
 (labels ((guess-type (arg)
 	   (typecase arg
 	     (number (js-call (format nil "~A" arg)))
@@ -28,14 +29,26 @@
   (defun arg-array (args)
     (let ((arr (%array)))
       (loop :for arg :in args
-	    :do (%array-push arr (guess-type arg))
-	    :return arr))))
+	    :do (%array-push arr (guess-type arg)))
+      arr)))
       
 (defun js-new (class-ref &rest constructor-args-obj)
   (if constructor-args-obj
       (%reflect-construct class-ref (arg-array constructor-args-obj))
       (%new class-ref)))
 
+(define-js-getter (prop-set-fn :js-expr "set" :type :js-ref)
+    ((ths :js-ref)))
+
+(define-js-method (%set! :js-expr "set(~{~A~^, ~})" :type :js-ref)
+    ((ths :js-ref)
+     (arg :object)))
+
+
+(defun set! (prop &rest args)
+  (%set! prop (arg-array args)))
+
+  
 (define-js-function (js-* :js-expr "((a, b) => a * b)" :type :object)
     ((numerator :object)
      (denominator :object)))

@@ -8,7 +8,7 @@ export { AdditiveAnimationBlendMode, AlwaysStencilFunc, AmbientLight, AnimationA
 
 function WebGLAnimation() {
 
-	let context = null;
+	let context = window;
 	let isAnimating = false;
 	let animationLoop = null;
 	let requestId = null;
@@ -17,7 +17,7 @@ function WebGLAnimation() {
 
 		animationLoop( time, frame );
 
-		requestId = context.requestAnimationFrame( onAnimationFrame );
+		requestId = window.requestAnimationFrame( onAnimationFrame );
 
 	}
 
@@ -28,7 +28,7 @@ function WebGLAnimation() {
 			if ( isAnimating === true ) return;
 			if ( animationLoop === null ) return;
 
-			requestId = context.requestAnimationFrame( onAnimationFrame );
+			requestId = window.requestAnimationFrame( onAnimationFrame );
 
 			isAnimating = true;
 
@@ -36,7 +36,7 @@ function WebGLAnimation() {
 
 		stop: function () {
 
-			context.cancelAnimationFrame( requestId );
+			window.cancelAnimationFrame( requestId );
 
 			isAnimating = false;
 

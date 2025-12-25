@@ -10,7 +10,7 @@
 
 (let ((aspect (js-/ window-width window-height))
       (half (js-call "0.5")))
-  (defparameter camera (js-new (three-class perspective-camera) 60 (js-* aspect half) 150 1000)))
+  (defparameter camera (js-new (three-class perspective-camera) 36 aspect 0.25 16)))
 
 (defparameter camera-helper (js-new (three-class camera-helper) camera))
 
@@ -63,3 +63,5 @@
 
 (define-js-function (request-animation-frame :js-expr "window.requestAnimationFrame" :type :js-ref)
     ((callback :js-ref)))
+
+(scene-add scene (js-new (three-class ambient-light) (js-call "0xffffff")))
