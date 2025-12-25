@@ -46,6 +46,10 @@
    (y :object)
    (z :object)))
 
+(define-js-accessor (x :js-expr "x" :type :js-ref)
+  ((self :js-ref)
+   (new :js-ref)))
+
 (define-js-method (look-at :js-expr "lookAt" :type :js-ref)
   ((self :js-ref)
    (target :js-ref)))
