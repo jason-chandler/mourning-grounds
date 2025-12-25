@@ -44,6 +44,10 @@
     ((numerator :object)
      (denominator :object)))
 
+(define-js-function (js-- :js-expr "((a, b) => a - b)" :type :object)
+    ((numerator :object)
+     (denominator :object)))
+
 (define-js-variable (%document :js-expr "document" :type :symbol))
 
 (define-js-method (%create-element :js-expr "createElement" :type :js-ref)

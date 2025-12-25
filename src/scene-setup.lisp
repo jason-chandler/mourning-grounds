@@ -40,7 +40,7 @@
      (width :js-ref)
      (height :js-ref)))
 
-(define-js-setter (set-request-animation-frame :js-expr "requestAnimationFrame" :type :null)
+(define-js-accessor (instance-request-animation-frame :js-expr "requestAnimationFrame" :type :js-ref)
     ((renderer :js-ref)
      (anim-fn :js-ref)))
 
