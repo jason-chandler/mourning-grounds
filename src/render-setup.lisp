@@ -44,6 +44,14 @@
 (set-position (three-position test-mesh) 15 3 -80)
 (look-at camera (three-position test-mesh))
 
+
+(add-event-listener %window "resize" (lambda-js-callback :js-ref
+					 ((ev :js-ref))
+				       (setf (aspect camera) (js-/ window-width window-height))
+				       (camera-helper-update-matrix camera-helper)
+				       (renderer-set-size renderer window-width window-height)))
+				       
+
 (renderer-set-animation-loop renderer (lambda-js-callback :js-ref
 					  ((dt :js-ref))
 					(camera-helper-update-matrix camera-helper)

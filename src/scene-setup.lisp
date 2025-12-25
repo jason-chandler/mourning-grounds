@@ -8,6 +8,10 @@
 (define-js-variable (window-width :js-expr "window.innerWidth" :type :fixnum))
 (define-js-variable (window-height :js-expr "window.innerHeight" :type :fixnum))
 
+(define-js-accessor (aspect :js-expr "aspect" :type :js-ref)
+  ((self :js-ref)
+   (new :js-ref)))
+
 (define-js-accessor (far :js-expr "far" :type :js-ref)
   ((self :js-ref)
    (new :fixnum)))
@@ -105,3 +109,4 @@
     ((callback :js-ref)))
 
 (scene-add scene (js-new (three-class ambient-light) (js-call "0xffffff")))
+				       

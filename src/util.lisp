@@ -62,6 +62,7 @@
      (denominator :object)))
 
 (define-js-variable (%document :js-expr "document" :type :symbol))
+(define-js-variable (%window :js-expr "window" :type :js-ref))
 
 (define-js-method (%create-element :js-expr "createElement" :type :js-ref)
     ((doc :js-ref)
