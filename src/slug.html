@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Web Embeddable Common Lisp</title>
+    <link rel="stylesheet" href="easy.css" />
+    <script type="module" src="three.module.min.js"></script>
+    <script type="module">
+      import * as THREE from './three.module.min.js';
+      window.THREE = THREE;
+    </script>
+    <script type="text/javascript" src="boot.js"></script>
+    <script type="text/javascript" src="wecl.js"></script>
+    <script type="text/common-lisp" src="slug.lisp"></script>
+    <script type="text/common-lisp" src="wank.lisp"></script>
+    <script type="text/common-lisp" src="easy.lisp">
+      (defvar *connect-button* (make-element "button" :text "Connect"))
+      (define-js-callback (connect-to-slug :type :null) ((event :js-ref))
+        (wank-connect "localhost" 8889)
+        (setf (inner-text *connect-button*) "Crash!"))
+      (add-event-listener *connect-button* "click" (js-callback connect-to-slug))
+      (append-child [body] *connect-button*)
+    </script>
+    <script type="text/common-lisp" src="package.lisp"></script>
+    <script type="text/common-lisp" src="macros.lisp"></script>
+    <script type="text/common-lisp" src="util.lisp"></script>
+    <script type="text/common-lisp" src="scene-setup.lisp"></script>
+  </head>
+  <body>
+  </body>
+</html>

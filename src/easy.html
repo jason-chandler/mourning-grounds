@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Web Embeddable Common Lisp</title>
+    <link rel="stylesheet" href="easy.css" />
+    <script type="text/javascript" src="boot.js"></script>
+    <script type="text/javascript" src="wecl.js"></script>
+  </head>
+  <body>
+    <script type="text/common-lisp" src="easy.lisp" id='easy-script'>
+(defvar *div* (make-element "div" :id "my-ticker"))
+(append-child [body] *div*)
+
+(dotimes (v 4)
+  (push-counter v))
+
+(loop for tic from 6 above 0
+      do (replace-children *div* (make-paragraph "~a" tic))
+         (js-sleep 1000)
+      finally (replace-children *div* (make-paragraph "BOOM!")))
+
+(show-script-text "easy-script")
+    </script>
+  </body>
+</html>
