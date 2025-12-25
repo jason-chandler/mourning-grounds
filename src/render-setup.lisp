@@ -50,6 +50,19 @@
   ((self :js-ref)
    (new :js-ref)))
 
+(define-js-accessor (y :js-expr "y" :type :js-ref)
+  ((self :js-ref)
+   (new :js-ref)))
+
+(define-js-accessor (z :js-expr "z" :type :js-ref)
+  ((self :js-ref)
+   (new :js-ref)))
+
+(define-js-accessor (rotation :js-expr "rotation" :type :js-ref)
+  ((self :js-ref)
+   (new :js-ref)))
+
+
 (define-js-method (look-at :js-expr "lookAt" :type :js-ref)
   ((self :js-ref)
    (target :js-ref)))
@@ -63,6 +76,7 @@
 (setf (far camera) 2000)
 (set-position (three-position camera) 23 -21 -20)
 (set-position (three-position test-mesh) 15 3 -80)
+(look-at camera (three-position test-mesh))
 
 (renderer-set-animation-loop renderer (lambda-js-callback :js-ref
 					  ((dt :js-ref))
@@ -70,5 +84,4 @@
 					(camera-helper-update camera-helper)
 					(renderer-set-clear-color renderer (js-call "0xbbbbbb") 1)
 					(renderer-set-viewport renderer (js-/ window-width 2) 0 (js-/ window-width 2) window-height)
-					(look-at camera (three-position test-mesh))
 					(renderer-render renderer scene camera)))
