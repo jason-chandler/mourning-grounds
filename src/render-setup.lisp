@@ -32,40 +32,6 @@
 
 (scene-add scene test-mesh)
 
-(define-js-accessor (far :js-expr "far" :type :js-ref)
-  ((self :js-ref)
-   (new :fixnum)))
-
-(define-js-accessor (three-position :js-expr "position" :type :js-ref)
-  ((self :js-ref)
-   (new :js-ref)))
-
-(define-js-method (set-position :js-expr "set" :type :js-ref)
-  ((pos :js-ref)
-   (x :object)
-   (y :object)
-   (z :object)))
-
-(define-js-accessor (x :js-expr "x" :type :js-ref)
-  ((self :js-ref)
-   (new :js-ref)))
-
-(define-js-accessor (y :js-expr "y" :type :js-ref)
-  ((self :js-ref)
-   (new :js-ref)))
-
-(define-js-accessor (z :js-expr "z" :type :js-ref)
-  ((self :js-ref)
-   (new :js-ref)))
-
-(define-js-accessor (rotation :js-expr "rotation" :type :js-ref)
-  ((self :js-ref)
-   (new :js-ref)))
-
-
-(define-js-method (look-at :js-expr "lookAt" :type :js-ref)
-  ((self :js-ref)
-   (target :js-ref)))
 
 (defparameter *dt* 0)
 
@@ -83,5 +49,5 @@
 					(camera-helper-update-matrix camera-helper)
 					(camera-helper-update camera-helper)
 					(renderer-set-clear-color renderer (js-call "0xbbbbbb") 1)
-					(renderer-set-viewport renderer (js-/ window-width 2) 0 (js-/ window-width 2) window-height)
+					(renderer-set-viewport renderer 0 0 window-width window-height)
 					(renderer-render renderer scene camera)))

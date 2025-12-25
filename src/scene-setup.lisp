@@ -8,9 +8,49 @@
 (define-js-variable (window-width :js-expr "window.innerWidth" :type :fixnum))
 (define-js-variable (window-height :js-expr "window.innerHeight" :type :fixnum))
 
+(define-js-accessor (far :js-expr "far" :type :js-ref)
+  ((self :js-ref)
+   (new :fixnum)))
+
+(define-js-accessor (three-position :js-expr "position" :type :js-ref)
+  ((self :js-ref)
+   (new :js-ref)))
+
+(define-js-method (set-position :js-expr "set" :type :js-ref)
+  ((pos :js-ref)
+   (x :object)
+   (y :object)
+   (z :object)))
+
+(define-js-accessor (x :js-expr "x" :type :js-ref)
+  ((self :js-ref)
+   (new :js-ref)))
+
+(define-js-accessor (y :js-expr "y" :type :js-ref)
+  ((self :js-ref)
+   (new :js-ref)))
+
+(define-js-accessor (z :js-expr "z" :type :js-ref)
+  ((self :js-ref)
+   (new :js-ref)))
+
+(define-js-accessor (rotation :js-expr "rotation" :type :js-ref)
+  ((self :js-ref)
+   (new :js-ref)))
+
+(define-js-accessor (order :js-expr "order" :type :string)
+  ((self :js-ref)
+   (new :string)))
+
+(define-js-method (look-at :js-expr "lookAt" :type :js-ref)
+  ((self :js-ref)
+   (target :js-ref)))
+
 (let ((aspect (js-/ window-width window-height))
       (half (js-call "0.5")))
-  (defparameter camera (js-new (three-class perspective-camera) 36 aspect 0.25 16)))
+  (defparameter camera (js-new (three-class perspective-camera) 70 aspect 0.1 1000)))
+
+(setf (order (rotation camera)) "YXZ")
 
 (defparameter camera-helper (js-new (three-class camera-helper) camera))
 

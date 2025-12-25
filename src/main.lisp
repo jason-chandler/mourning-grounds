@@ -34,8 +34,8 @@
 
 (defparameter spotlight (js-new (three-class spot-light) (js-call "0xffffff") 60))
 
-(scene-add scene spotlight)
-(set-position (three-position spotlight) 0 50 0)
+(console-log (three-position camera))
+(set-position (three-position camera) 5 -11 0)
 (set-position (three-position test-mesh) 15 3 -80)
 
 (let ((obj (js-new "Object")))
