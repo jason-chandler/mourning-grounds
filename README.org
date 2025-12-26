@@ -1,5 +1,11 @@
 * Mourning-Grounds 
 
-** Usage
+Pre-config:
+clone https://github.com/dkochmanski/slime/ into your local quicklisp projects or common-lisp folder, it has modifications to get it to work with the browser
 
-** Installation
+Add .emacs to your .emacs
+
+** Usage
+Open up a lisp file in the project and press C-M L, it will show T when the lime server is up and nil when it's down.
+sbcl --load webserver.lisp
+Navigate to localhost:8888/slug.html
