@@ -1,7 +1,8 @@
 * Mourning-Grounds 
 
 Pre-config:
-clone https://github.com/dkochmanski/slime/ into your local quicklisp projects or common-lisp folder, it has modifications to get it to work with the browser
+- clone https://github.com/dkochmanski/slime/ into your local quicklisp projects or common-lisp folder, it has modifications to get it to work with the browser
+- install the websocket package from MELPA if you don't have it
 
 Add .emacs to your .emacs
 
