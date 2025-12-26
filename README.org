@@ -7,5 +7,10 @@ Pre-config:
 
 ** Usage
 Open up a lisp file in the project and press C-M L, it will show T when the lime server is up and nil when it's down.
+
 sbcl --load webserver.lisp
+
 Navigate to localhost:8888/slug.html
+
+Press the connect button to connect to your emacs session. You should get a normal slime window.
+Company-mode repeatedly throws harmless but annoying errors, I recommend only turning it on for a short while as needed.
