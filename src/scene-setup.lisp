@@ -26,6 +26,10 @@
    (y :object)
    (z :object)))
 
+(define-js-accessor (normal :js-expr "normal" :type :js-ref)
+    ((self :js-ref)
+     (new :js-ref)))
+
 (define-js-accessor (x :js-expr "x" :type :js-ref)
   ((self :js-ref)
    (new :js-ref)))

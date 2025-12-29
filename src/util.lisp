@@ -61,6 +61,39 @@
     ((numerator :object)
      (denominator :object)))
 
+
+;; comparisons seem broken
+(define-js-function (js-== :js-expr "((a, b) => a == b)" :type :boolean)
+    ((numerator :object)
+     (denominator :object)))
+
+(define-js-function (js-=== :js-expr "((a, b) => a === b)" :type :boolean)
+    ((numerator :object)
+     (denominator :object)))
+
+(define-js-function (js-grt :js-expr "((a, b) => a > b)" :type :boolean)
+    ((numerator :object)
+     (denominator :object)))
+
+(define-js-function (js-grt-eq :js-expr "((a, b) => a >= b)" :type :boolean)
+    ((numerator :object)
+     (denominator :object)))
+
+(define-js-function (js-less :js-expr "((a, b) => a < b)" :type :boolean)
+    ((numerator :object)
+     (denominator :object)))
+
+(define-js-function (js-less-eq :js-expr "((a, b) => a <= b)" :type :boolean)
+    ((numerator :object)
+     (denominator :object)))
+
+(define-js-function (to-bool :js-expr "new Boolean" :type :boolean)
+    ((truthiness :js-ref)))
+
+(define-js-function (math-max :js-expr "Math.max" :type :js-ref)
+    ((a :js-ref)
+     (b :js-ref)))
+
 (define-js-variable (%document :js-expr "document" :type :symbol))
 (define-js-variable (%window :js-expr "window" :type :js-ref))
 
