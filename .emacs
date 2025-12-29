@@ -134,7 +134,7 @@
 ;; (lime-net-listen "localhost" 8889)
 ;; (lime-stop)
 
-(load "/Users/jasonchandler/wecl-build/wecl/Code/slime/slime.el")
+(load "~/common-lisp/slime/slime.el")
 
 (defvar *lime-on* nil)
 
