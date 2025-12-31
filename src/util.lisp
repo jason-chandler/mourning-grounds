@@ -61,31 +61,33 @@
     ((numerator :object)
      (denominator :object)))
 
-
-;; comparisons seem broken
-(define-js-function (js-== :js-expr "((a, b) => a == b)" :type :boolean)
+(define-js-function (js-+ :js-expr "((a, b) => a + b)" :type :object)
     ((numerator :object)
      (denominator :object)))
 
-(define-js-function (js-=== :js-expr "((a, b) => a === b)" :type :boolean)
-    ((numerator :object)
-     (denominator :object)))
+(define-js-function (js-== :js-expr "((a, b) => new Boolean(a == b))" :type :boolean)
+    ((a :object)
+     (b :object)))
 
-(define-js-function (js-grt :js-expr "((a, b) => a > b)" :type :boolean)
-    ((numerator :object)
-     (denominator :object)))
+(define-js-function (js-=== :js-expr "((a, b) => new Boolean(a === b))" :type :boolean)
+    ((a :object)
+     (b :object)))
 
-(define-js-function (js-grt-eq :js-expr "((a, b) => a >= b)" :type :boolean)
-    ((numerator :object)
-     (denominator :object)))
+(define-js-function (js-grt :js-expr "((a, b) => new Boolean(a > b))" :type :boolean)
+    ((a :object)
+     (b :object)))
 
-(define-js-function (js-less :js-expr "((a, b) => a < b)" :type :boolean)
-    ((numerator :object)
-     (denominator :object)))
+(define-js-function (js-grt-eq :js-expr "((a, b) => new Boolean(a >= b))" :type :boolean)
+    ((a :object)
+     (b :object)))
 
-(define-js-function (js-less-eq :js-expr "((a, b) => a <= b)" :type :boolean)
-    ((numerator :object)
-     (denominator :object)))
+(define-js-function (js-less :js-expr "((a, b) => new Boolean(a < b))" :type :boolean)
+    ((a :object)
+     (b :object)))
+
+(define-js-function (js-less-eq :js-expr "((a, b) => new Boolean(a <= b))" :type :boolean)
+    ((a :object)
+     (b :object)))
 
 (define-js-function (to-bool :js-expr "new Boolean" :type :boolean)
     ((truthiness :js-ref)))

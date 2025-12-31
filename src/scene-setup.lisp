@@ -60,19 +60,21 @@
 
 (setf (order (rotation camera)) "YXZ")
 
-(defparameter camera-helper (js-new (three-class camera-helper) camera))
-
 (define-js-method (camera-helper-update :js-expr "update" :type :null)
     ((cam-helper :js-ref)))
 
 (define-js-method (camera-helper-update-matrix :js-expr "updateMatrix" :type :null)
     ((cam-helper :js-ref)))
 
+(define-js-method (camera-update-projection-matrix :js-expr "updateProjectionMatrix" :type :null)
+    ((cam :js-ref)))
+
+
 (define-js-method (scene-add :js-expr "add" :type :null)
     ((scn :js-ref)
      (new-scn-member :js-ref)))
 
-(scene-add scene camera-helper)
+(scene-add scene camera)
 
 (defparameter container (%create-element %document "div"))
 (%append-child %doc-body container)

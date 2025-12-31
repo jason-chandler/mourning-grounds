@@ -44,18 +44,30 @@
 (set-position (three-position test-mesh) 15 3 -80)
 (look-at camera (three-position test-mesh))
 
+(renderer-set-clear-color renderer (js-call "0xbbbbbb") 1)
 
 (add-event-listener %window "resize" (lambda-js-callback :js-ref
 					 ((ev :js-ref))
 				       (setf (aspect camera) (js-/ window-width window-height))
-				       (camera-helper-update-matrix camera-helper)
-				       (renderer-set-size renderer window-width window-height)))
+				       (camera-update-projection-matrix camera)
+				       (renderer-set-size renderer window-width window-height)
+				       (renderer-set-viewport renderer 0 0 window-width window-height)))
 				       
+
+(define-js-object (performance :js-expr "performance" :type :js-ref))
+(define-js-method (now :js-expr "now" :type :js-ref)
+    ((self :js-ref)))
+
+(let ((frames 0)
+      (prev-time 0))
+(defun log-fps (dt)
+  (setq frames (+ frames 1))
+  (when (js-grt dt (js-+ prev-time 1000))
+    (console-log (js-/ (* frames 1000) (js-- dt prev-time)))
+    (setq prev-time dt)
+    (setq frames 0))))
 
 (renderer-set-animation-loop renderer (lambda-js-callback :js-ref
 					  ((dt :js-ref))
-					(camera-helper-update-matrix camera-helper)
-					(camera-helper-update camera-helper)
-					(renderer-set-clear-color renderer (js-call "0xbbbbbb") 1)
-					(renderer-set-viewport renderer 0 0 window-width window-height)
+					(log-fps dt)
 					(renderer-render renderer scene camera)))
